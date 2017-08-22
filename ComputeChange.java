@@ -52,6 +52,12 @@ public class ComputeChange {
             }// end if
         }// end for
 
-        System.out.println(stack);
+//        System.out.println(stack);
+
+        Iterator<Stack> it = stack.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+
     }
 }
