@@ -28,7 +28,6 @@ import java.text.DecimalFormat;
 *              The above equation is the modern form of Ohm's law.
 *
 * Platform     jdk 1.8.0_241, NetBeans IDE 12.3,  Mac 11.2.3
-* Course       CS 141 O1, Spring 2020, Edmonds
 * Hours        2 hours and 45 minutes
 * Date         4/3/2021
 * History Log  
