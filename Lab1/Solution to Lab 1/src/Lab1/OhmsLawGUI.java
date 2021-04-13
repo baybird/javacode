@@ -56,7 +56,7 @@ public class OhmsLawGUI extends javax.swing.JFrame {
         // set button calculateJButton as default
         this.getRootPane().setDefaultButton(calculateJButton);
         // set icon for form 
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage("sr/Lab1/OhmsFormula.jpg"));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("src/Lab1/ohmsFormula.jpg"));
         // center form
         this.setLocationRelativeTo(null);        
     }
@@ -88,6 +88,7 @@ public class OhmsLawGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lab 1 - Ohm's Law");
+        setBackground(new java.awt.Color(204, 255, 204));
         setResizable(false);
 
         titleJLabel.setFont(new java.awt.Font("Lucida Grande", 2, 24)); // NOI18N
@@ -232,6 +233,7 @@ public class OhmsLawGUI extends javax.swing.JFrame {
     *</pre>
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     private void quitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitJButtonActionPerformed
+        // Terminate the application
         System.exit(0);
     }//GEN-LAST:event_quitJButtonActionPerformed
 
@@ -246,6 +248,7 @@ public class OhmsLawGUI extends javax.swing.JFrame {
     *</pre>
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
+        // Clear all text fields and reset the form
         currentJTextField.setText("");
         resistanceJTextField.setText("");
         voltsJTextField.setText("");
