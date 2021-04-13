@@ -2,3 +2,6 @@
 *.zip
 HelloWorld.*
 Welcome*.*
+/Lab2/Solution to Lab 2/build/
+/Lab2/Solution to Lab 2/nbproject/private/
+/Lab2/Solution to Lab 2/dist/
