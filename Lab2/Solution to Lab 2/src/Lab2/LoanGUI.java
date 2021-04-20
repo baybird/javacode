@@ -1,4 +1,3 @@
-
 package Lab2;
 
 import java.awt.Color;
@@ -16,7 +15,7 @@ import javax.swing.*;
 * Description     Calculate loan payment given loan amount, interest
 *                 rate, and time of loan
 * @author         <i>Robert Tang</i>
-* Environment     Mac, Big Sure 11.2.3, jdk 1.8.0_241, NetBeans IDE 12.3
+* Environment     Mac, Big Sur 11.2.3, jdk 1.8.0_241, NetBeans IDE 12.3
 * Date            4/12/2021
 * @version        1.0.0
 * @see            javax.swing.JFrame
@@ -26,7 +25,7 @@ import javax.swing.*;
 public class LoanGUI extends javax.swing.JFrame {
 
     int counter = 0; // number of calculations counter, class field.
-    
+
     /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     *<pre>
     * Method        LoanGUI() -- default constructor
@@ -39,26 +38,30 @@ public class LoanGUI extends javax.swing.JFrame {
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     public LoanGUI() {
         initComponents(); // build the form
-        
+
         // set calculateJButton as default
         this.getRootPane().setDefaultButton(calculateJButton);
-        
+
         // set icon for form
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage("src/Lab2/tennis.jpg"));
-        
+        this.setIconImage(
+            Toolkit.getDefaultToolkit().getImage("src/Lab2/tennis.jpg")
+        );
+
         // centers the form at start
         this.setLocationRelativeTo(null);
-        
+
         // set cursor in principalJTextField
         this.principalJTextField.requestFocus();
-        
+
         // change background color
         this.getContentPane().setBackground(Color.CYAN);
-        
+
         this.setDate();
     }
     
-    private void setDate(){
+        
+
+    private void setDate() {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date now = new Date();
         this.setTitle("Loan Calculator -- " + dateFormat.format(now));
@@ -90,6 +93,7 @@ public class LoanGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lab 2 - Loan Application");
+        setIconImage(Toolkit.getDefaultToolkit().getImage("src/Lab2/tennis.jpg"));
         setMinimumSize(new java.awt.Dimension(500, 300));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(7, 2, 3, 3));
@@ -197,7 +201,7 @@ public class LoanGUI extends javax.swing.JFrame {
     * Date          4/12/2021
     * History Log    
     *</pre>
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     private void quitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitJButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_quitJButtonActionPerformed
@@ -213,7 +217,7 @@ public class LoanGUI extends javax.swing.JFrame {
     * Date          4/12/2021
     * History Log    
     *</pre>
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     private void clearJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearJButtonActionPerformed
         counter = 0;
         counterJTextField.setText("");
@@ -238,83 +242,94 @@ public class LoanGUI extends javax.swing.JFrame {
     * Date          4/12/2021
     * History Log    
     *</pre>
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
-    private void calculateJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateJButtonActionPerformed
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    private void calculateJButtonActionPerformed(
+        java.awt.event.ActionEvent evt
+    ) {//GEN-FIRST:event_calculateJButtonActionPerformed
         // calculate payment on a loan.
         // constants for max values, and number of compoundings per year
         final double MAX_AMOUNT = 100000000;
         final double MAX_INTEREST_RATE = 100;
         final double COMPOUNDINGS = 12;
         final double PERIOD_INTEREST = COMPOUNDINGS * 100;
-        
-        String errorMessage = "Please enter a positive numbers for all required fields " + 
-                "\nLoan amount must be in range (0, " + MAX_AMOUNT + "]" +
-                "\nInterest rate must be in range [0, " + MAX_INTEREST_RATE + "]" + 
-                "\nYears must be in range (0, " + MAX_INTEREST_RATE + "]";
-        
+
+        String errorMessage =
+            "Please enter a positive numbers for all required fields " +
+            "\nLoan amount must be in range (0, " +
+            MAX_AMOUNT +
+            "]" +
+            "\nInterest rate must be in range [0, " +
+            MAX_INTEREST_RATE +
+            "]" +
+            "\nYears must be in range (0, " +
+            MAX_INTEREST_RATE +
+            "]";
+
         boolean invalidLoanAmount = true;
         boolean invalidRate = true;
         boolean invalidYears = true;
-        
-        try{
+
+        try {
             // get inputs from textFields
             // invalidLoanAmount = true;
             double amount = Double.parseDouble(principalJTextField.getText());
-            invalidLoanAmount  = amount <= 0 || amount > MAX_AMOUNT;
+            invalidLoanAmount = amount <= 0 || amount > MAX_AMOUNT;
 
             //invalidRace = true;
             double rate = Double.parseDouble(rateJTextField.getText());
             invalidRate = rate < 0 || rate > MAX_INTEREST_RATE;
 
-
             //invalidYears = true;
             double years = Double.parseDouble(yearsJTextField.getText());
             invalidYears = years < 0 || years > 100;
 
-            
-            boolean invalidlnputs = invalidLoanAmount || invalidRate || invalidYears;
-            
-            if (invalidlnputs)
+            boolean invalidlnputs =
+                invalidLoanAmount || invalidRate || invalidYears;
+
+            if (invalidlnputs) {
                 throw new NumberFormatException();
-            else{
+            } else {
                 //calculace paymenc using formula
                 counter++;
-                double payment = (amount * rate/PERIOD_INTEREST) 
-                                 / (1 - Math.pow((1 + rate/PERIOD_INTEREST), years * (-COMPOUNDINGS)));
-                
+                double payment =
+                    (amount * rate / PERIOD_INTEREST) /
+                    (
+                        1 -
+                        Math.pow(
+                            (1 + rate / PERIOD_INTEREST),
+                            years * (-COMPOUNDINGS)
+                        )
+                    );
                 double interest = years * COMPOUNDINGS * payment - amount;
                 DecimalFormat dollars = new DecimalFormat("$#,##0.00");
                 String result = dollars.format(payment);
-                
-                
+
                 // Display results
                 counterJTextField.setText(String.valueOf(counter));
                 paymentJTextField.setText(result);
                 interestJTextField.setText(dollars.format(interest));
             }
-            
-        }
-        catch(NumberFormatException nume)
-        {
-            JOptionPane.showMessageDialog(null, errorMessage,
-            "Input Error", JOptionPane.WARNING_MESSAGE);
-            
-            if(invalidLoanAmount){
+        } catch (NumberFormatException nume) {
+            JOptionPane.showMessageDialog(
+                null,
+                errorMessage,
+                "Input Error",
+                JOptionPane.WARNING_MESSAGE
+            );
+
+            if (invalidLoanAmount) {
                 principalJTextField.requestFocus();
                 principalJTextField.selectAll();
-            }
-            else if(invalidRate){
+            } else if (invalidRate) {
                 rateJTextField.requestFocus();
                 rateJTextField.selectAll();
-            }
-            else if(invalidYears){
+            } else if (invalidYears) {
                 yearsJTextField.requestFocus();
                 yearsJTextField.selectAll();
             }
-            
         }
     }//GEN-LAST:event_calculateJButtonActionPerformed
-    
+
     /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     *<pre>
     * Method        main()
@@ -324,12 +339,12 @@ public class LoanGUI extends javax.swing.JFrame {
     * Date          4/12/2021
     * History Log    
     *</pre>
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/ 
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -339,22 +354,32 @@ public class LoanGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoanGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger
+                .getLogger(LoanGUI.class.getName())
+                .log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoanGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger
+                .getLogger(LoanGUI.class.getName())
+                .log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoanGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger
+                .getLogger(LoanGUI.class.getName())
+                .log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoanGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger
+                .getLogger(LoanGUI.class.getName())
+                .log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoanGUI().setVisible(true);
+        java.awt.EventQueue.invokeLater(
+            new Runnable() {
+                public void run() {
+                    new LoanGUI().setVisible(true);
+                }
             }
-        });
+        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
