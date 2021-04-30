@@ -62,11 +62,11 @@ public class ExtractDigits {
         // Solution for Problem I - 3. How would you change the program to allow
         // input of any number of digits in a number?
         
-        final int choiceOfAlgorithm = 1; // allow input of any number of digits
-        //final int choiceOfAlgorithm = 2; // allow input of 4-digit number.
+        final int CHOICE_OF_ALGORITHM = 1; // allow input of any number of digits
+        //final int CHOICE_OF_ALGORITHM = 2; // allow input of 4-digit number.
 
         StringBuffer message = new StringBuffer();
-        if (choiceOfAlgorithm == 1) {
+        if (CHOICE_OF_ALGORITHM == 1) {
             message.append("Please enter a number of any number of digits");
         } else {
             message.append("Please enter a 4-digit number");
@@ -80,7 +80,7 @@ public class ExtractDigits {
             StringBuffer output = new StringBuffer();
             output.append("The digits of ").append(input).append(" are ");
 
-            if (choiceOfAlgorithm == 1) {
+            if (CHOICE_OF_ALGORITHM == 1) {
                 // this is the solution for: 3. How would you change the program to
                 // allow input of any number of digits in a number?
                 final int stringLength = input.length();
