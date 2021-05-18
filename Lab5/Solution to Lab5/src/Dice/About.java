@@ -1,18 +1,14 @@
-package FutureAnnuity;
+package Dice;
 
-
-
-import java.awt.Color;
-import java.awt.Toolkit;
 
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * <pre>
  * File         About.java
- * Project      Future Annuity
- * Description  This class shows the about form of shipping information
+ * Project      Dice
+ * Description  This class shows the about form of dice application.
  * Platform     Mac, Big Sur 11.2.3, jdk 1.8.0_241, NetBeans IDE 12.3
- * Date         4/23/2021
+ * Date         5/3/2021
  * History Log
  * @author      <i>Robert Tang</i>
  * @version 1.0.0
@@ -32,7 +28,7 @@ public class About extends javax.swing.JDialog {
      * @author          <i>Robert Tang</i>
      * @param parent-awt.Frame
      * @param modal-boolean
-     * Date 4/19/2021
+     * Date 5/3/2021
      * </pre>
      * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      */
@@ -48,16 +44,6 @@ public class About extends javax.swing.JDialog {
         
         // move cursor to first row
         aboutJTextArea.setCaretPosition(0);
-        
-        // change background color
-        this.getContentPane().setBackground(new Color(153,153,255));
-        
-        //warningJLabel.setText("Copyright "+ "\u00a9" + "by Robert");
-        
-        // set icon
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage("src/Lab3/parcel.png"));
-        
-        
     }
 
     /**
@@ -69,6 +55,7 @@ public class About extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        titleJPanel = new javax.swing.JPanel();
         titleJLabel = new javax.swing.JLabel();
         aboutJScrollPane = new javax.swing.JScrollPane();
         aboutJTextArea = new javax.swing.JTextArea();
@@ -77,17 +64,42 @@ public class About extends javax.swing.JDialog {
         copyrightJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Shipping About");
+        setTitle("Dice About");
+        setBackground(new java.awt.Color(255, 255, 255));
         setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/FutureAnnuity/icon.png")).getImage());
         setResizable(false);
         setSize(new java.awt.Dimension(300, 200));
         setType(java.awt.Window.Type.UTILITY);
 
+        titleJPanel.setBackground(new java.awt.Color(255, 51, 51));
+        titleJPanel.setForeground(new java.awt.Color(255, 255, 255));
+
         titleJLabel.setFont(new java.awt.Font("Lucida Grande", 2, 24)); // NOI18N
+        titleJLabel.setForeground(new java.awt.Color(255, 255, 255));
         titleJLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        titleJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FutureAnnuity/icon.png"))); // NOI18N
-        titleJLabel.setText("Annuity About");
+        titleJLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/dice-sm.jpg"))); // NOI18N
+        titleJLabel.setText("Dice About");
+
+        javax.swing.GroupLayout titleJPanelLayout = new javax.swing.GroupLayout(titleJPanel);
+        titleJPanel.setLayout(titleJPanelLayout);
+        titleJPanelLayout.setHorizontalGroup(
+            titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(titleJPanelLayout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(titleJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(40, Short.MAX_VALUE)))
+        );
+        titleJPanelLayout.setVerticalGroup(
+            titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 128, Short.MAX_VALUE)
+            .addGroup(titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(titleJPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(titleJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(12, Short.MAX_VALUE)))
+        );
 
         aboutJScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -95,10 +107,11 @@ public class About extends javax.swing.JDialog {
         aboutJTextArea.setColumns(20);
         aboutJTextArea.setLineWrap(true);
         aboutJTextArea.setRows(5);
-        aboutJTextArea.setText("An annuity is a sum of money that is paid in regular equal payments. Although the word annuity suggests annual (or yearly) payments, they can be made semi-annually, quarterly, monthly, or at some other regular interval. Payments are usually made at the end of the payment interval. The amount of an annuity is the sum of all the individual payments from the time of the first payment until the last payment is made, together with all the earned interest.\n\nThe program provides future annuity calculation that allow user to enter the regular periodic payment amount, annual interest rate , number of compounding periods per year and length of the maturity. ");
+        aboutJTextArea.setText("This Java program simulates roll of 2 dice with a histogram similar to the GUI to the right. The program will display the frequencies and precents of each die after each “Roll”. There is a strategy displays the images of the dice without to loads the images from disk 100,000 times! It provides the input validation for custom number of tosses in Other JTextField. Impement two classes: A Die class and DiceDriver class.\n\nThe program contains a diceButtonGroup that goes under Other Components because it is not a visible component. It’s needed to group all radio buttons (set each one’s ButtonGroup property to the diceButtonGroup). Without this step, the radio button are not mutually exclusive and behave like check boxes in that you can select multiple of them. Note also that radio button One is selected at design time.\n");
         aboutJTextArea.setWrapStyleWord(true);
         aboutJScrollPane.setViewportView(aboutJTextArea);
 
+        closeJButton.setBackground(new java.awt.Color(0, 240, 240));
         closeJButton.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         closeJButton.setMnemonic('C');
         closeJButton.setText("Close");
@@ -114,7 +127,7 @@ public class About extends javax.swing.JDialog {
         warningJLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         copyrightJLabel.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        copyrightJLabel.setText("Copyright©  by Robert");
+        copyrightJLabel.setText("Copyright © Robert");
         copyrightJLabel.setToolTipText("");
         copyrightJLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -123,38 +136,32 @@ public class About extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(warningJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(titleJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(aboutJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 19, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(warningJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(aboutJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 10, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(copyrightJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addComponent(copyrightJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
+            .addComponent(titleJPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 403, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(titleJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(aboutJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(warningJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(copyrightJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(aboutJScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(warningJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(copyrightJLabel)
+                    .addComponent(closeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,15 +174,15 @@ public class About extends javax.swing.JDialog {
      * Description   Close the about form
      * @param        java.awt.event.ActionEvent evt
      * @author       <i>Robert Tang</i>
-     * @see java.awt.event.ActionEvent
-     * Date 4/19/2021 History Log
+     * @see         java.awt.event.ActionEvent
+     * Date         5/3/2021  
      * </pre>
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      */
     private void closeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeJButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_closeJButtonActionPerformed
-
+    
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -224,6 +231,7 @@ public class About extends javax.swing.JDialog {
     private javax.swing.JButton closeJButton;
     private javax.swing.JLabel copyrightJLabel;
     private javax.swing.JLabel titleJLabel;
+    private javax.swing.JPanel titleJPanel;
     private javax.swing.JLabel warningJLabel;
     // End of variables declaration//GEN-END:variables
 }
