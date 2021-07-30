@@ -1,0 +1,4 @@
+Peter Rabbit,123 Bunny Road,Cabbage Town,OR,97555-6312
+Captain Spiff,4444 Pluto Way,Andromeda Town,NV,83112
+Flupsy Bunny,69 Carrot Court,Bunnyville,IO,55519
+Kahte Lamb,459 S. Super High Avenue,Edmonds,WA,98022-5729
