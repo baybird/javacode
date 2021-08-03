@@ -3,5 +3,6 @@
 build
 dist
 private
+*.class
 HelloWorld.*
 Welcome.*
