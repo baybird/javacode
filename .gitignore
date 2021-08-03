@@ -6,3 +6,6 @@ private
 *.class
 HelloWorld.*
 Welcome.*
+nbproject
+*.xml
+*.mf
