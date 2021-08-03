@@ -1,5 +1,4 @@
-package DNAfrequence;
-
+package DNAsequence;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -12,7 +11,20 @@ import java.util.List;
 public class PlayDNA {
 
     public static void main(String[] args) {
-        testGetSortedListOfSubstrings();
+        testReverseComplement();
+    }
+
+    public static void testReverseComplement() {
+        Sequences tester = new PlainSequences();
+        String fileName = "plainExampleSmall.text";
+        try {
+            tester.readSequences(fileName);
+        } catch (FileNotFoundException e) {
+        }
+        String answer = "TCTGCC"; //original is GGCAGA  //T->A, A->T, C->G, G->C and reverse to get TCTGCC
+        String reverseComplement = tester.getReverseComplement(0);
+        //assertEquals("the reverse complement is not right", answer, reverseComplement);
+        System.out.println(reverseComplement.endsWith(answer));
     }
 
     public static void testGetSortedListOfSubstrings() {
@@ -46,7 +58,7 @@ public class PlayDNA {
         answer.add("GGCAGA");
 
         List sortedSubStrings = tester.getSortedListOfSubstrings(0);
-        
+
         System.out.println(sortedSubStrings);
         System.out.println(answer);
     }

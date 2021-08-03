@@ -1,4 +1,4 @@
-package DNAfrequence;
+package DNAsequence;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,17 +9,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * <pre>
  * File         PlainSequences.java
- * Project      Week 4 - Sort the list of all substrings of a DNA sequence
+ * Project      DNA Sequence
+ * Description  This class implements the getReverseComplement() method with Java 
+ *              Collections' Stack and Queues that to sort the list of all 
+ *              substrings of a DNA sequence based on last week's PlainSequences 
+ *              class.
  * course       CS143
- * Description  This class implements the getSortedListOfSubstrings method that
- *              to sort the list of all substrings of a DNA sequence based on 
- *              last week's PlainSequences class.
  * Platform     Mac, Big Sur 11.2.3, jdk 1.8.0_241, JGRASP
- * Date         7/21/2021
+ * Date         8/3/2021
  * History Log
  * @author      <i>Robert Tang</i>
  * @version     1.0.0
@@ -143,7 +145,7 @@ public class PlainSequences implements Sequences {
     @Override
     public void readSequences(String fileName) throws FileNotFoundException {
         try {
-            Scanner input = new Scanner(new File(System.getProperty("user.dir") + "/src/DNAfrequence/" + fileName));
+            Scanner input = new Scanner(new File("DNAsequence/" + fileName));
             StringBuilder sb = new StringBuilder();
 
             while (input.hasNextLine()) {
@@ -151,8 +153,9 @@ public class PlainSequences implements Sequences {
             }
             descriptions.add(fileName);
             sequences.add(sb.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+            throw new FileNotFoundException();
         }
     }
 
@@ -244,4 +247,55 @@ public class PlainSequences implements Sequences {
         }
         return dnaGroups.toString();
     }
+    
+    /**
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    * <pre>
+    * Method           getReverseComplement()
+    * Description      This method generates the reverse complement sequence.
+    *                  1) reverse the sequence of letters (i.e. "agtc" becomes "ctga").
+    *                  2) make the following substitutions to all the letters in the reversed string:
+    *                       t -> a, a-> t, g -> c, c-> g
+    *                  3) Then finally return the string that results from doing steps 1 and 2.
+    * @param           index-int
+    * @return          sb-string
+    * @author          <i>Robert Tang</i>
+    * Date             8/3/2021
+    * </pre>
+    * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    */
+    @Override
+    public String getReverseComplement(int index) {
+        Stack<String> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        String[] items = getSequences().get(index).split("");
+        
+        // Push the DNA code to a stack, and convert them to complement code.
+        for (int i = 0; i < items.length; i++) {
+            if(items[i].equalsIgnoreCase("T")){
+                st.push("A");
+            }
+            else if(items[i].equalsIgnoreCase("A")){
+                st.push("T");
+            }
+            else if(items[i].equalsIgnoreCase("G")){
+                st.push("C");
+            }
+            else if(items[i].equalsIgnoreCase("C")){
+                st.push("G");
+            }
+            else{
+                st.push(items[i]);
+            }
+        }
+        
+        // Appends code from stack to a string builder
+        while (!st.isEmpty()) {            
+            sb.append(st.pop());
+        }
+        
+        // return the string builder as a string
+        return sb.toString();
+    }
+   
 }

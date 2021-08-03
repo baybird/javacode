@@ -1,4 +1,4 @@
-package DNAfrequence;
+package DNAsequence;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.AfterClass;
@@ -150,5 +150,31 @@ public class PlainSequencesTest {
       List sortedSubStrings = tester.getSortedListOfSubstrings(0);
       assertEquals("the sorted substrings is not right", answer,sortedSubStrings);
    }
+   
+   @Test
+   public void testGetReverseComplement() {
+      Sequences tester = new PlainSequences();
+
+      String fileName = "plainExampleSmall.text";
+      try {
+         tester.readSequences(fileName);
+      } catch (FileNotFoundException e) { 
+      }
+      String answer = "TCTGCC"; //original is GGCAGA  //T->A, A->T, C->G, G->C and reverse to get TCTGCC
+      String reverseComplement = tester.getReverseComplement(0);
+      assertEquals("the reverse complement is not right", answer,reverseComplement);
+
+      tester = new PlainSequences();
+      fileName = "peptide_mRNA.text";
+      try {
+         tester.readSequences(fileName);
+      } catch (FileNotFoundException e) { 
+      }
+      answer = "TTCAGGTCTGTAATTAAACTTGCGTGAGCATTCATGGGTGAGGTTTTATTTGCAGGAGGAGAAGGTCTTCCAGAAGAAGTTCCTGCAGGGCATTCTGTCCCGGCGCGCGGATTGCTGGGGGGGTGCGCCTTCCTGCCGCCTGGCCACCTCCCGAGCTTCCTCTCCTATGAGGGGCCCGGCACTGGCCTGGGAGGTCCACTCAAACCACCAAGCGAGGAAAGTCAGGAGGCTGCTTTTCCTTATTCCTGCCGCTTCCTGCATATGCTCGCTGTCTCGGCCGGTGGGGCCACCCTCCAGGGGCAGGGCAGCGGTGGCCGTGGCCCCGGAGAGCAGCAGCAGCAGGAGGCCGGGGGACAATGGCATCTTGT";
+      reverseComplement = tester.getReverseComplement(0);
+      assertEquals("the reverse complement is not right", answer,reverseComplement);
+
+   }
+   
 
 }

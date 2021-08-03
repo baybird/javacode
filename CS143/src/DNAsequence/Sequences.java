@@ -1,4 +1,4 @@
-package DNAfrequence;
+package DNAsequence;
 
 import java.util.List;
 import java.util.Map;
@@ -13,4 +13,5 @@ interface Sequences {
    public String formatInGroups(int index, int basesPerGroup, int groupsPerLine);
    public Map<String, Integer> generateFrequencies(int index);
    public List<String> getSortedListOfSubstrings(int index);
+   public String getReverseComplement(int index);
 }
