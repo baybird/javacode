@@ -20,7 +20,6 @@ public class SelectionSort {
 
     public static void selectionSort(int[] items) {
         for (int i = 0; i < items.length; i++) {
-
             // find index of smallest remaining value
             int min = i;
             for (int j = i+1; j < items.length; j++) {
