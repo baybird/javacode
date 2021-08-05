@@ -15,7 +15,8 @@ public class MergeSort {
         mergeSort(numbers);
         System.out.println(Arrays.toString(numbers));
     }
-
+    
+    // break
     public static void mergeSort(int[] items) {
         // split array into two halves
         if (items.length >= 2) {
@@ -32,6 +33,7 @@ public class MergeSort {
         }
     }
     
+    // join
     public static void merge(int[] result, int [] left, int [] right) {
         int indexOfLeft = 0;    // left
         int indexOfRight = 0;   // right
