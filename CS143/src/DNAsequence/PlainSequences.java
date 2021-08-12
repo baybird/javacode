@@ -1,4 +1,3 @@
-package DNAsequence;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -145,7 +144,7 @@ public class PlainSequences implements Sequences {
     @Override
     public void readSequences(String fileName) throws FileNotFoundException {
         try {
-            Scanner input = new Scanner(new File("DNAsequence/" + fileName));
+            Scanner input = new Scanner(new File("./" + fileName));
             StringBuilder sb = new StringBuilder();
 
             while (input.hasNextLine()) {
