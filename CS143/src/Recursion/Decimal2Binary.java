@@ -7,7 +7,7 @@ package Recursion;
 public class Decimal2Binary {
     
     public static void main(String[] args) {
-        printBinary(6);
+        printBinary(225);
     }
     
     public static void printBinary(int n) {
@@ -20,3 +20,6 @@ public class Decimal2Binary {
         } 
     }
 }
+/*
+11100001
+*/

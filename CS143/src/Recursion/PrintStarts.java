@@ -12,11 +12,11 @@ public class PrintStarts {
     public static void printStarts(int n){
         if (n==1) {
             // base case
-            System.out.println(n);
+            System.out.println("*");
         }
         else{
             // recursive case
-            System.out.print(n);
+            System.out.print("*");
             printStarts(n-1);
         }    
     }
