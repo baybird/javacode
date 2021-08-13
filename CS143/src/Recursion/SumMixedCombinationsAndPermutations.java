@@ -5,40 +5,40 @@ import java.util.Set;
 import java.util.Stack;
 
 /**
- * possible combination: f(x) = x! * 2^(x-1)
+ * 
  * @author robert
  */
-public class SumPermutation {
+public class SumMixedCombinationsAndPermutations {
 
     static private Set<String> all = new HashSet<>();
     static int fitNums = 0;
 
     public static void main(String[] args) {
-        permutations("12345", "");
+        recursion("123456", "");
         System.out.println("all: " + all.size());
-//        System.out.println(fitNums + "/" + all.size() + " (" + String.valueOf((fitNums * 1.0 / all.size() * 100)).substring(0, 5) + "%)");
     }
-
-    private static void permutations(String input, String output) {
+    
+    /**
+     * f(n) = n! * 2^(n-1)
+     * 
+     * @param input
+     * @param output 
+     */
+    private static void recursion(String input, String output) {
         if (input.length() == 0 && !all.contains(output)) {
-            all.add(output);
-//            System.out.println(output);
-            System.out.println(output + "=" + evaluate(output));
-//            int targetVal = 28;
-//            if (evaluate(output) == targetVal) {
-//                fitNums++;
-//                System.out.println(output + " = " + targetVal);
-//            }
+            all.add(output + "=" + evaluate(output));            
+            //System.out.println(output + "=" + evaluate(output));
         } else {
             for (int i = 0; i < input.length(); i++) {
                 String chosen = input.substring(i, i + 1);
                 String rest = input.substring(0, i) + input.substring(i + 1);
 
                 if (output.length() > 0) {
-                    permutations(rest, output + "+" + chosen);
-                    permutations(rest, output + "-" + chosen);
+                    // combination of "+, -"
+                    recursion(rest, output + "+" + chosen);
+                    recursion(rest, output + "-" + chosen);
                 } else {
-                    permutations(rest, chosen);
+                    recursion(rest, chosen);
                 }
             }
         }
@@ -46,7 +46,6 @@ public class SumPermutation {
 
     private static int evaluate(String input) {
         Stack<Integer> st = new Stack<>();
-
         while (!input.isEmpty()) {
             String current = input.substring(0, 1);
             if ("+".equals(current) || "-".equals(current)) {
@@ -69,12 +68,12 @@ public class SumPermutation {
 }
 /*
  
-  ----jGRASP exec: java -ea Recursion.SumPermutation
+  ----jGRASP exec: java -ea Recursion.SumMixedCombinationsAndPermutations
   ----   at: Aug 12, 2021 2:50:38 PM
   ----jGRASP wedge: pid for process is 6220  pids for wedge are 6218 and 6219.
   ----jGRASP wedge: CLASSPATH is ":.:::/Applications/jGRASP.app/Contents/Resources/jgrasp/extensions/classes".
   ----jGRASP wedge: working directory is /Users/robert/Projects/Java/stroedAtGithub/CS143/src
-  ----jGRASP wedge2: actual command sent [/Library/Java/JavaVirtualMachines/jdk1.8.0_241.jdk/Contents/Home/bin/java -ea Recursion.SumPermutation].
+  ----jGRASP wedge2: actual command sent [/Library/Java/JavaVirtualMachines/jdk1.8.0_241.jdk/Contents/Home/bin/java -ea Recursion.SumMixedCombinationsAndPermutations].
  1+2+3+4+5=15
  1+2+3+4-5=5
  1+2+3-4+5=7
